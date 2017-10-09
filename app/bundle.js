@@ -30276,7 +30276,7 @@
 	var fetchFavorites = exports.fetchFavorites = function fetchFavorites(userId) {
 	
 	  return function (dispatch) {
-	    fetch('http://localhost:3000/api/users/' + userId + '/favorites').then(function (response) {
+	    fetch('/api/users/' + userId + '/favorites').then(function (response) {
 	      return response.json();
 	    }).then(function (userFav) {
 	      dispatch(getFavorites(userFav.data));
@@ -30555,7 +30555,7 @@
 	  }, {
 	    key: 'addFavorite',
 	    value: function addFavorite(filmData) {
-	      fetch('http://localhost:3000/api/users/favorites/new', {
+	      fetch('/api/users/favorites/new', {
 	        method: "POST",
 	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify(filmData)
@@ -30715,7 +30715,7 @@
 	      if (!this.validateEmail(email)) {
 	        return this.setState({ error: 'Please Enter A Valid Email' });
 	      } else {
-	        fetch('http://localhost:3000/api/users', {
+	        fetch('/api/users', {
 	          method: "POST",
 	          headers: { "Content-Type": "application/json" },
 	          body: JSON.stringify({ email: email, password: password })
@@ -30899,7 +30899,7 @@
 	      if (!this.validateEmail(email)) {
 	        return this.setState({ error: 'Please Enter A Valid Email' });
 	      } else {
-	        fetch('http://localhost:3000/api/users/new', {
+	        fetch('/api/users/new', {
 	          method: "POST",
 	          headers: { "Content-Type": "application/json" },
 	          body: JSON.stringify({ name: name, email: email, password: password })
@@ -30907,7 +30907,7 @@
 	          if (!response.ok) {
 	            _this2.setState({ error: 'Email already exist' });
 	          } else {
-	            fetch('http://localhost:3000/api/users', {
+	            fetch('/api/users', {
 	              method: "POST",
 	              headers: { "Content-Type": "application/json" },
 	              body: JSON.stringify({ email: email, password: password })
@@ -31066,7 +31066,7 @@
 	    value: function removeFavorite(userId, filmId) {
 	      this.props.fetchFavorites(this.props.user.id);
 	
-	      fetch('http://localhost:3000/api/users/' + userId + '/favorites/' + filmId, {
+	      fetch('/api/users/' + userId + '/favorites/' + filmId, {
 	        method: "DELETE",
 	        headers: { "Content-Type": "application/json" }
 	      });
