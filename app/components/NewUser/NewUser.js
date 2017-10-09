@@ -29,7 +29,7 @@ class NewUser extends Component {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ name, email, password})
       })
-      .then( response => {
+      .then(response => {
         if(!response.ok) {
           this.setState({ error: 'Email already exist'})
         } else {
@@ -38,7 +38,7 @@ class NewUser extends Component {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ email, password })
           })
-          .then( response => {
+          .then(response => {
             response.json().then(user => {
               login(user.data)
               this.props.fetchFavorites(user.data.id)
