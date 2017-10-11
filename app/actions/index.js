@@ -1,4 +1,4 @@
-export const fetchFilms = () => {
+export function fetchFilms(){
   return dispatch => {
     fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=9b896459c611dec3ec7899adad9da8ec')
     .then((response) => {
@@ -10,8 +10,7 @@ export const fetchFilms = () => {
   }
 }
 
-export const fetchFavorites = (userId) => {
-
+export function fetchFavorites(userId) {
   return dispatch => {
     fetch(`/api/users/${userId}/favorites`)
     .then((response) => response.json())

@@ -30263,7 +30263,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var fetchFilms = exports.fetchFilms = function fetchFilms() {
+	exports.fetchFilms = fetchFilms;
+	exports.fetchFavorites = fetchFavorites;
+	function fetchFilms() {
 	  return function (dispatch) {
 	    fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=9b896459c611dec3ec7899adad9da8ec').then(function (response) {
 	      return response.json();
@@ -30271,10 +30273,9 @@
 	      dispatch(getFilms(films.results));
 	    });
 	  };
-	};
+	}
 	
-	var fetchFavorites = exports.fetchFavorites = function fetchFavorites(userId) {
-	
+	function fetchFavorites(userId) {
 	  return function (dispatch) {
 	    fetch('/api/users/' + userId + '/favorites').then(function (response) {
 	      return response.json();
@@ -30282,7 +30283,7 @@
 	      dispatch(getFavorites(userFav.data));
 	    });
 	  };
-	};
+	}
 	
 	//Films reducer
 	var getFilms = exports.getFilms = function getFilms(films) {
@@ -30387,8 +30388,8 @@
 	  }
 	
 	  _createClass(App, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount(dispatch) {
+	    key: 'componentDidMount',
+	    value: function componentDidMount(dispatch) {
 	      this.props.fetchFilms();
 	    }
 	  }, {
@@ -30898,29 +30899,28 @@
 	
 	      if (!this.validateEmail(email)) {
 	        return this.setState({ error: 'Please Enter A Valid Email' });
-	      } else {
-	        fetch('/api/users/new', {
-	          method: "POST",
-	          headers: { "Content-Type": "application/json" },
-	          body: JSON.stringify({ name: name, email: email, password: password })
-	        }).then(function (response) {
-	          if (!response.ok) {
-	            _this2.setState({ error: 'Email already exist' });
-	          } else {
-	            fetch('/api/users', {
-	              method: "POST",
-	              headers: { "Content-Type": "application/json" },
-	              body: JSON.stringify({ email: email, password: password })
-	            }).then(function (response) {
-	              response.json().then(function (user) {
-	                login(user.data);
-	                _this2.props.fetchFavorites(user.data.id);
-	              });
-	              _this2.props.history.push('/');
-	            });
-	          }
-	        });
 	      }
+	      fetch('/api/users/new', {
+	        method: 'POST',
+	        headers: { 'Content-Type': 'application/json' },
+	        body: JSON.stringify({ name: name, email: email, password: password })
+	      }).then(function (response) {
+	        if (!response.ok) {
+	          _this2.setState({ error: 'Email already exist' });
+	        } else {
+	          fetch('/api/users', {
+	            method: "POST",
+	            headers: { "Content-Type": "application/json" },
+	            body: JSON.stringify({ email: email, password: password })
+	          }).then(function (response) {
+	            response.json().then(function (user) {
+	              login(user.data);
+	              _this2.props.fetchFavorites(user.data.id);
+	            });
+	            _this2.props.history.push('/');
+	          });
+	        }
+	      });
 	
 	      this.setState({
 	        name: '',

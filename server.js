@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const cors = require('express-cors');
-let bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const port = (process.env.PORT || 3000);
 const app = express();
 const users = require('./src/users');
@@ -27,15 +27,15 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(express.static('app'));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, './app/index.html'))
+  res.sendFile(path.join(__dirname, 'index.html'))
 });
 
 app.use('/api', users);
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, './app/index.html'))
+  res.sendFile(path.join(__dirname, 'index.html'))
 });
 
 app.listen(port);
 
-console.log(`Listening at http://localhost:${port}`);
+console.log(`Hello at http://localhost:${port}`);

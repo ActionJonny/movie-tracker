@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
-import thunk from 'redux-thunk'
-import logger from 'redux-logger'
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 import './reset.css'
 import './components/App/App.css'

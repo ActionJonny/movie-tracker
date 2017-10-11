@@ -23,31 +23,30 @@ class NewUser extends Component {
 
     if(!this.validateEmail(email)) {
       return this.setState({error: 'Please Enter A Valid Email'})
-    } else {
-      fetch('/api/users/new', {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ name, email, password})
-      })
-      .then(response => {
-        if(!response.ok) {
-          this.setState({ error: 'Email already exist'})
-        } else {
-          fetch('/api/users', {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ email, password })
-          })
-          .then(response => {
-            response.json().then(user => {
-              login(user.data)
-              this.props.fetchFavorites(user.data.id)
-            })
-            this.props.history.push('/')
-          })
-        }
-      })
     }
+    fetch('/api/users/new', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password })
+    })
+    .then(response => {
+      if(!response.ok) {
+        this.setState({ error: 'Email already exist'})
+      } else {
+        fetch('/api/users', {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ email, password })
+        })
+        .then(response => {
+          response.json().then(user => {
+            login(user.data)
+            this.props.fetchFavorites(user.data.id)
+          })
+          this.props.history.push('/')
+        })
+      }
+    })
 
     this.setState({
       name: '',

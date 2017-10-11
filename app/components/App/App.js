@@ -7,7 +7,7 @@ import FavoritesContainer from '../Favorites/FavoritesContainer'
 
 class App extends Component {
 
-  componentWillMount(dispatch) {
+  componentDidMount(dispatch) {
     this.props.fetchFilms()
   }
 
