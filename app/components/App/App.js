@@ -30,7 +30,7 @@ class App extends Component {
   logOut() {
     this.props.logOut()
     this.props.resetFavorites()
-    this.props.history.push('/home')
+    this.props.history.push('/')
   }
 
   render() {
@@ -40,7 +40,7 @@ class App extends Component {
           {this.userInfo()}
           <h1>MY FLICKSTER BOOK</h1>
         </header>
-        <Route exact path='/home' component={ NowShowingContainer }/>
+        <Route exact path='/movie-tracker' component={ NowShowingContainer }/>
         <Route path='/login' render= { ({ match, location, history}) => <LoginContainer history={history} /> }/>
         <Route exact path='/new-user' render= { ({ match, location, history}) => <NewUserContainer history={history} /> }/>
         <Route exact path='/favorites' component={ FavoritesContainer } />

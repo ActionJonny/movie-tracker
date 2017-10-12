@@ -43,7 +43,7 @@ class NewUser extends Component {
             login(user.data)
             this.props.fetchFavorites(user.data.id)
           })
-          this.props.history.push('/home')
+          this.props.history.push('/')
         })
       }
     })
