@@ -24,7 +24,7 @@ class Favorites extends Component {
     return(
       <div className="favorite-container">
         <nav>
-          <Link className='main-link navlink' to='/'>Main</Link>
+          <Link className='main-link navlink' to='/movie-tracker'>Main</Link>
         </nav>
         { favorites.length ?
           favorites.map(film => {

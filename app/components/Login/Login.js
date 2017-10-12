@@ -64,7 +64,7 @@ class Login extends Component {
     return(
       <div className='user-login'>
         <nav>
-          <Link className='favorites-link navlink' to='/home'>Main</Link>
+          <Link className='favorites-link navlink' to='/'>Main</Link>
         </nav>
         <h3>LOGIN</h3>
         <div className='user-form'>

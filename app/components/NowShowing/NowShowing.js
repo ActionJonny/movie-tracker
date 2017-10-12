@@ -25,7 +25,7 @@ class NowShowing extends Component {
     return(
       <div className='nowshowing-container'>
         <nav>
-          { this.props.user.loggedIn ? <NavLink className='favorites-link navlink' to='/favorites'>Favorites</NavLink> : null }
+          { this.props.user.loggedIn ? <NavLink className='favorites-link navlink' to='/favorites'>Favorites</NavLink> : null}
         </nav>
         <div className="film-container">
           {this.props.films.map(film  => {

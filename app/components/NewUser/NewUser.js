@@ -60,7 +60,7 @@ class NewUser extends Component {
     return(
       <div className="newuser">
         <nav>
-          <Link className='favorites-link navlink' to='/home'>Main</Link>
+          <Link className='favorites-link navlink' to='/'>Main</Link>
         </nav>
         <h3>NEW USER SIGN-UP</h3>
         <div className="new-user-form">
