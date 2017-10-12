@@ -27,6 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(express.static('app'));
 
 app.get('/', function (req, res) {
+  console.log('shit');
   res.sendFile(path.join(__dirname, 'index.html'))
 });
 
