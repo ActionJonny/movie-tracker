@@ -30,7 +30,7 @@ class App extends Component {
   logOut() {
     this.props.logOut()
     this.props.resetFavorites()
-    this.props.history.push('/')
+    this.props.history.push('/home')
   }
 
   render() {
