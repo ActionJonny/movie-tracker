@@ -31,7 +31,7 @@ const store = createStore(rootReducer, devTools, applyMiddleware(...middleware))
 const router = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Route to="/" component={AppContainer}/>
+      <Route to="/movie-tracker" component={AppContainer}/>
     </ConnectedRouter>
   </Provider>
 )
