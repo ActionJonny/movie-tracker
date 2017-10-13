@@ -39,8 +39,6 @@ class Favorites extends Component {
               </div>
             )
           }) : null }
-
-
         </div>
       )
     }

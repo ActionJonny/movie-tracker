@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-
 class Login extends Component {
   constructor(){
     super()
@@ -72,7 +71,7 @@ class Login extends Component {
           <input name='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} type='password' placeholder='password'></input>
           <button className='submit-button button' onClick={this.submitLogin.bind(this)} type='submit'>Submit Button</button>
         </div>
-        <Link className='signup-link navlink' to='/new-user'>Sign-Up</Link>
+        <Link className='signup-link navlink' to='/movie-tracker/new-user'>Sign-Up</Link>
       </div>
     )
   }
