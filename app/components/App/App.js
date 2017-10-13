@@ -15,7 +15,7 @@ class App extends Component {
     if(!this.props.user.loggedIn){
       return (
         <div className='loggedIn'>Please
-          <NavLink className='login-link navlink' to='/movie-tracker/login'>LOGIN</NavLink>
+          <NavLink className='login-link navlink' to='/login'>LOGIN</NavLink>
           to add Favorites
         </div>
       )
@@ -30,7 +30,7 @@ class App extends Component {
   logOut() {
     this.props.logOut()
     this.props.resetFavorites()
-    this.props.history.push('/movie-tracker')
+    this.props.history.push('/')
   }
 
   render() {
@@ -40,10 +40,10 @@ class App extends Component {
           {this.userInfo()}
           <h1>MY FLICKSTER BOOK</h1>
         </header>
-        <Route exact path='/movie-tracker' component={ NowShowingContainer }/>
-        <Route path='/movie-tracker/login' render= { ({ match, location, history}) => <LoginContainer history={history} /> }/>
-        <Route exact path='/movie-tracker/new-user' render= { ({ match, location, history}) => <NewUserContainer history={history} /> }/>
-        <Route exact path='/movie-tracker/favorites' component={ FavoritesContainer } />
+        <Route exact path='/' component={ NowShowingContainer }/>
+        <Route path='/login' render= { ({ match, location, history}) => <LoginContainer history={history} /> }/>
+        <Route exact path='/new-user' render= { ({ match, location, history}) => <NewUserContainer history={history} /> }/>
+        <Route exact path='/favorites' component={ FavoritesContainer } />
       </div>
     )
   }

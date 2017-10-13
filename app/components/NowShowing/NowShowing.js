@@ -8,12 +8,12 @@ class NowShowing extends Component {
       const favFilms = this.props.favorites.map(film => film.movie_id)
       favFilms.includes(filmData.movie_id)? null: this.addFavorite(filmData)
     } else {
-      this.props.history.push('/movie-tracker/login')
+      this.props.history.push('/login')
     }
   }
 
   addFavorite(filmData){
-    fetch(`/movie-tracker/api/users/favorites/new`, {
+    fetch(`/api/users/favorites/new`, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify( filmData )
@@ -25,7 +25,7 @@ class NowShowing extends Component {
     return(
       <div className='nowshowing-container'>
         <nav>
-          { this.props.user.loggedIn ? <NavLink className='favorites-link navlink' to='/movie-tracker/favorites'>Favorites</NavLink> : null}
+          { this.props.user.loggedIn ? <NavLink className='favorites-link navlink' to='/favorites'>Favorites</NavLink> : null}
         </nav>
         <div className="film-container">
           {this.props.films.map(film  => {

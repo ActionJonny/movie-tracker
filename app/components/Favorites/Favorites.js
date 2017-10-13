@@ -11,7 +11,7 @@ class Favorites extends Component {
   removeFavorite(userId, filmId) {
     this.props.fetchFavorites(this.props.user.id)
 
-    fetch(`/movie-tracker/api/users/${userId}/favorites/${filmId}`, {
+    fetch(`/api/users/${userId}/favorites/${filmId}`, {
       method: "DELETE",
       headers: {"Content-Type": "application/json"},
     })
@@ -24,7 +24,7 @@ class Favorites extends Component {
     return(
       <div className="favorite-container">
         <nav>
-          <Link className='main-link navlink' to='/movie-tracker'>Main</Link>
+          <Link className='main-link navlink' to='/'>Main</Link>
         </nav>
         { favorites.length ?
           favorites.map(film => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+
 class Login extends Component {
   constructor(){
     super()
@@ -24,7 +25,7 @@ class Login extends Component {
     if(!this.validateEmail(email)) {
       return this.setState({error: 'Please Enter A Valid Email'})
     } else {
-      fetch('/movie-tracker/api/users', {
+      fetch('/api/users', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ email, password })
@@ -41,7 +42,7 @@ class Login extends Component {
             login(user.data)
             this.props.fetchFavorites(user.data.id)
           })
-          this.props.history.push('/movie-tracker')
+          this.props.history.push('/')
         }
       })
       .catch(error => {
@@ -63,7 +64,7 @@ class Login extends Component {
     return(
       <div className='user-login'>
         <nav>
-          <Link className='favorites-link navlink' to='/movie-tracker'>Main</Link>
+          <Link className='favorites-link navlink' to='/'>Main</Link>
         </nav>
         <h3>LOGIN</h3>
         <div className='user-form'>
@@ -71,7 +72,7 @@ class Login extends Component {
           <input name='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} type='password' placeholder='password'></input>
           <button className='submit-button button' onClick={this.submitLogin.bind(this)} type='submit'>Submit Button</button>
         </div>
-        <Link className='signup-link navlink' to='/movie-tracker/new-user'>Sign-Up</Link>
+        <Link className='signup-link navlink' to='/new-user'>Sign-Up</Link>
       </div>
     )
   }
