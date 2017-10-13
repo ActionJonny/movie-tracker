@@ -24,7 +24,7 @@ class NewUser extends Component {
     if(!this.validateEmail(email)) {
       return this.setState({error: 'Please Enter A Valid Email'})
     }
-    fetch('/api/users/new', {
+    fetch('/movie-tracker/api/users/new', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password })
@@ -33,7 +33,7 @@ class NewUser extends Component {
       if(!response.ok) {
         this.setState({ error: 'Email already exist'})
       } else {
-        fetch('/api/users', {
+        fetch('/movie-tracker/api/users', {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({ email, password })
@@ -43,7 +43,7 @@ class NewUser extends Component {
             login(user.data)
             this.props.fetchFavorites(user.data.id)
           })
-          this.props.history.push('/')
+          this.props.history.push('/movie-tracker')
         })
       }
     })
@@ -60,7 +60,7 @@ class NewUser extends Component {
     return(
       <div className="newuser">
         <nav>
-          <Link className='favorites-link navlink' to='/'>Main</Link>
+          <Link className='favorites-link navlink' to='/movie-tracker'>Main</Link>
         </nav>
         <h3>NEW USER SIGN-UP</h3>
         <div className="new-user-form">

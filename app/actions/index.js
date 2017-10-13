@@ -12,7 +12,7 @@ export function fetchFilms(){
 
 export function fetchFavorites(userId) {
   return dispatch => {
-    fetch(`/api/users/${userId}/favorites`)
+    fetch(`/movie-tracker/api/users/${userId}/favorites`)
     .then((response) => response.json())
     .then((userFav) => {
       dispatch(getFavorites(userFav.data))

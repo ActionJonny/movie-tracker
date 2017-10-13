@@ -25,7 +25,7 @@ class Login extends Component {
     if(!this.validateEmail(email)) {
       return this.setState({error: 'Please Enter A Valid Email'})
     } else {
-      fetch('/api/users', {
+      fetch('/movie-tracker/api/users', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ email, password })
@@ -42,7 +42,7 @@ class Login extends Component {
             login(user.data)
             this.props.fetchFavorites(user.data.id)
           })
-          this.props.history.push('/')
+          this.props.history.push('/movie-tracker')
         }
       })
       .catch(error => {
@@ -64,7 +64,7 @@ class Login extends Component {
     return(
       <div className='user-login'>
         <nav>
-          <Link className='favorites-link navlink' to='/'>Main</Link>
+          <Link className='favorites-link navlink' to='/movie-tracker'>Main</Link>
         </nav>
         <h3>LOGIN</h3>
         <div className='user-form'>

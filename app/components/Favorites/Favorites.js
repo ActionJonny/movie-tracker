@@ -11,7 +11,7 @@ class Favorites extends Component {
   removeFavorite(userId, filmId) {
     this.props.fetchFavorites(this.props.user.id)
 
-    fetch(`/api/users/${userId}/favorites/${filmId}`, {
+    fetch(`/movie-tracker/api/users/${userId}/favorites/${filmId}`, {
       method: "DELETE",
       headers: {"Content-Type": "application/json"},
     })
